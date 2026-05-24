@@ -6,7 +6,7 @@
     ../../modules/ssh.nix
   ];
 
-  networking.hostName = "server";
+  networking.hostName = "yurnero";
 
   system.stateVersion = "25.05";
 }
