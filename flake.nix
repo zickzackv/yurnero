@@ -16,8 +16,8 @@
         specialArgs = { inherit self; };
         modules = [
           disko.nixosModules.disko
-          ./hosts/server/configuration.nix
-          ./hosts/server/disko.nix
+          ./hosts/yurnero/configuration.nix
+          ./hosts/yurnero/disko.nix
         ];
       };
     };
