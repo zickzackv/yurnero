@@ -12,7 +12,7 @@
 
   services.resolved.enable = true;
 
-  users.users.admin = {
+  users.users.fabian = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.bashInteractive;
@@ -22,9 +22,8 @@
 
   environment.systemPackages = with pkgs; [
     git
-    helix
+    kakoune
     curl
-    wget
     tmux
   ];
 
