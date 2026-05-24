@@ -4,9 +4,9 @@
     ./hardware-configuration.nix
     ../../modules/base.nix
     ../../modules/ssh.nix
+    ./disko.nix
   ];
 
   networking.hostName = "yurnero";
-
   system.stateVersion = "25.05";
 }

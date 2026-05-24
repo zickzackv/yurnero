@@ -1,7 +1,14 @@
-{ ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 {
-  # Platzhalter.
-  # Vor der Installation erzeugen mit:
-  #   nixos-generate-config --root /mnt
-  # und danach die generierte hardware-configuration.nix hierher kopieren.
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
+
+  boot.initrd.availableKernelModules = [ "ahci" "usbhid" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

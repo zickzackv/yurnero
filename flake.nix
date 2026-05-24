@@ -2,7 +2,7 @@
   description = "NixOS server on /dev/sda with disko, systemd-boot and SSH";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05-small";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -17,7 +17,6 @@
         modules = [
           disko.nixosModules.disko
           ./hosts/yurnero/configuration.nix
-          ./hosts/yurnero/disko.nix
         ];
       };
     };
