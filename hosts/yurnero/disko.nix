@@ -2,13 +2,15 @@
 {
   disko.devices = {
     disk = {
-      sda = {
+      system = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/ata-KINGSTON_SUV400S37480G_50026B7766031305";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
+              priority = 1;
+              name = "ESP";
               type = "EF00";
               size = "512M";
               content = {
@@ -20,6 +22,8 @@
             };
 
             root = {
+              priority = 2;
+              name = "nixos-root";
               size = "100%";
               content = {
                 type = "filesystem";
