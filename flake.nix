@@ -11,7 +11,7 @@
     let
       system = "x86_64-linux";
     in {
-      nixosConfigurations.server = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.yurnero = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit self; };
         modules = [
