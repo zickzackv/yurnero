@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../modules/base.nix
     ../../modules/ssh.nix
+    ../../modules/nix.nix
     ./disko.nix
   ];
 
