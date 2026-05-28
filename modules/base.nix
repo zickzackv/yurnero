@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  nixpkgs.config.allowUnfree = true;
+
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
 
@@ -21,7 +23,10 @@
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
+    _1password-cli
     git
+    tig
+    gitu
     kakoune
     curl
     tmux
