@@ -15,7 +15,7 @@
   users.users.fabian = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    shell = pkgs.bashInteractive;
+    shell = pkgs.fish;
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -25,7 +25,11 @@
     kakoune
     curl
     tmux
+    fish
+    btop
   ];
 
   services.qemuGuest.enable = false;
+  programs.fish.enable = true;
+  programs.fzf.fuzzyCompletion = true;
 }
