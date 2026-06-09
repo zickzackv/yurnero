@@ -77,6 +77,7 @@
       atime = "off";
       xattr = "sa";
       acltype = "posixacl";
+      canmount = "noauto";
     };
   };
 }

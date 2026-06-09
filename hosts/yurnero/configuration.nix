@@ -14,6 +14,7 @@
   boot.loader.timeout = 3;
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.extraPools = [ "data" ];
+  boot.zfs.forceImportRoot = false;
 
   networking.hostName = "yurnero";
   networking.useNetworkd = true;
