@@ -20,6 +20,9 @@
     curl
     tmux
     btop
+    gron
+    jq
+    ripgrep
   ];
 
   services.qemuGuest.enable = false;
