@@ -12,9 +12,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 3;
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.extraPools = [ "data" ];
 
   networking.hostName = "yurnero";
   networking.useNetworkd = true;
+  networking.hostId = "dc12e630";
   systemd.network.enable = true;
   services.resolved.enable = true;
 
