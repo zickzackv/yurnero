@@ -12,6 +12,7 @@
     ../../modules/ssh.nix
     ../../modules/nix.nix
     ../../modules/users.nix
+    ../../modules/samba.nix
     ./disko.nix
   ];
 
