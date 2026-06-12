@@ -2,12 +2,6 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  users.users.fabian = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    shell = pkgs.fish;
-  };
-
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
