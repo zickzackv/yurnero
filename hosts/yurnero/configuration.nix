@@ -1,19 +1,25 @@
-{ config, lib, pkgs, self, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}: {
   system.stateVersion = "25.05";
   imports = [
     ./hardware-configuration.nix
     ../../modules/base.nix
     ../../modules/ssh.nix
     ../../modules/nix.nix
+    ../../modules/users.nix
     ./disko.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 3;
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.extraPools = [ "data" ];
+  boot.supportedFilesystems = ["zfs"];
+  boot.zfs.extraPools = ["data"];
   boot.zfs.forceImportRoot = false;
 
   networking.hostName = "yurnero";
@@ -25,5 +31,5 @@
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
 
-  environment.enableAllTerminfo = true; 
+  environment.enableAllTerminfo = true;
 }
