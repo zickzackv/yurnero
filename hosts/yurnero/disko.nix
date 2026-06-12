@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   disko.devices.disk.system = {
     type = "disk";
     device = "/dev/disk/by-id/ata-KINGSTON_SUV400S37480G_50026B7766031305";
@@ -15,7 +14,7 @@
             type = "filesystem";
             format = "vfat";
             mountpoint = "/boot";
-            mountOptions = [ "umask=0077" ];
+            mountOptions = ["umask=0077"];
           };
         };
 
@@ -33,7 +32,7 @@
     };
   };
 
-  disko.devices.disk.data-a = {
+  disko.devices.disk.tank-a = {
     type = "disk";
     device = "/dev/disk/by-id/wwn-0x5000c50113b23351";
     content = {
@@ -42,13 +41,13 @@
         size = "100%";
         content = {
           type = "zfs";
-          pool = "data";
+          pool = "tank";
         };
       };
     };
   };
 
-  disko.devices.disk.data-b = {
+  disko.devices.disk.tank-b = {
     type = "disk";
     device = "/dev/disk/by-id/wwn-0x5000c5011367abdf";
     content = {
@@ -57,27 +56,59 @@
         size = "100%";
         content = {
           type = "zfs";
-          pool = "data";
+          pool = "tank";
         };
       };
     };
   };
 
-  disko.devices.zpool.data = {
+  disko.devices.zpool.tank = {
     type = "zpool";
     mode = "mirror";
-    mountpoint = "/mnt/data";
-
-    options = {
-      ashift = "12";
-    };
-
+    options.cachefile = "none";
     rootFsOptions = {
       compression = "zstd";
       atime = "off";
       xattr = "sa";
       acltype = "posixacl";
-      canmount = "noauto";
+      "com.sun:auto-snapshot" = "false";
+    };
+
+    datasets = {
+      # Dein NAS-Datenlayout
+      "public" = {
+        type = "zfs_fs";
+        mountpoint = "/tank/public";
+        options.mountpoint = "legacy";
+        options.compression = "zstd";
+      };
+
+      "family" = {
+        type = "zfs_fs";
+        mountpoint = "/tank/familie";
+        options.mountpoint = "legacy";
+        options.compression = "zstd";
+      };
+
+      "users" = {
+        type = "zfs_fs";
+        mountpoint = "none";
+      };
+
+      "users/andrea" = {
+        type = "zfs_fs";
+        mountpoint = "/tank/users/frau";
+        options.mountpoint = "legacy";
+        options.compression = "zstd";
+      };
+
+      "users/fabian" = {
+        type = "zfs_fs";
+        mountpoint = "/tank/users/fabian";
+        options.mountpoint = "legacy";
+        options.compression = "zstd";
+      };
+
     };
   };
 }
