@@ -92,7 +92,7 @@
 
       "users" = {
         type = "zfs_fs";
-        mountpoint = "none";
+        mountpoint = null;
       };
 
       "users/andrea" = {
