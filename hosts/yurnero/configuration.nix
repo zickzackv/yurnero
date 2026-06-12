@@ -19,7 +19,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 3;
   boot.supportedFilesystems = ["zfs"];
-  boot.zfs.extraPools = ["data"];
+  boot.zfs.extraPools = [];
   boot.zfs.forceImportRoot = false;
 
   networking.hostName = "yurnero";
